@@ -18,3 +18,7 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Trained model artifacts
+fine_tuned_bart/
+bart-summary-model/

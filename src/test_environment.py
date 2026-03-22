@@ -1,7 +1,15 @@
-import torch
-import transformers
-import datasets
+from transformers import pipeline
 
-print("Environment ready")
-print("Torch version:", torch.__version__)
-print("Transformers version:", transformers.__version__)
+summarizer = pipeline(
+    "summarization",
+    model="./fine_tuned_bart",
+    tokenizer="./fine_tuned_bart"
+)
+
+text = """
+Artificial intelligence is helping automate repetitive tasks
+and improve productivity across multiple industries.
+"""
+
+summary = summarizer(text, max_length=50, min_length=15, do_sample=False)
+print(summary[0]["summary_text"])
